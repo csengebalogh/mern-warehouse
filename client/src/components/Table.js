@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Products from './Products';
 
 function createData(name, supplier, price) {
   return { name, supplier, price};
@@ -11,7 +12,8 @@ const rows = [
 
 ];
 
-export default function BasicTable() {
+export default function BasicTable(props) {
+  const {children} = props
   return (
     <table class="table table-striped">
     <thead>
@@ -23,23 +25,7 @@ export default function BasicTable() {
         </tr>
     </thead>
     <tbody>
-        <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        </tr>
-        <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-        </tr>
-        <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
-        </tr>
+        <Products />
     </tbody>
     </table>
   );

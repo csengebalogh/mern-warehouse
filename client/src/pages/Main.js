@@ -1,5 +1,5 @@
 import React from "react"
-import { Table, Container, Search, AddForm } from '../components'
+import { Table, Container, Search, AddForm, Products } from '../components'
 
 function Main() {
     return (
