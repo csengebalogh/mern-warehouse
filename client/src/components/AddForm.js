@@ -1,6 +1,9 @@
 import React, {useState} from "react"
 
-import FileBase from 'react-file-base64'
+import { useDispatch } from 'react-redux'
+import { createProduct } from "../actions/products"
+
+// import FileBase from 'react-file-base64'
 function AddForm() {
     const [productData, setProductData] = useState({
         name: '',
@@ -8,8 +11,12 @@ function AddForm() {
         price: 0
     })
 
-    const handleSubmit = () => {
+    const dispatch = useDispatch()
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        dispatch(createProduct(productData))
     }
 
     const clear = () => {
@@ -56,7 +63,8 @@ function AddForm() {
 
             <button 
                 type="submit" 
-                className="btn btn-primary w-70">Submit
+                className="btn btn-primary w-70"
+                onClick={handleSubmit}>Submit
             </button>
             <button 
                 type="submit" 

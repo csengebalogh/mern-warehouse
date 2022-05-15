@@ -2,7 +2,7 @@ import * as api from '../api'
 
 // Action Creators 
 
-const getProducts = () => async (dispatch) => {
+export const getProducts = () => async (dispatch) => {
 
     try {
         const { data } = await api.fetchProducts()
@@ -11,6 +11,15 @@ const getProducts = () => async (dispatch) => {
     } catch (error) {
         console.log(error.message)
     }
-
 }
-export default getProducts
+
+export const createProduct = (product) => async (dispatch) => {
+    
+    try {
+        const { data } = await api.createProduct(product)
+        dispatch({ type: 'CREATE', payload: data })
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+

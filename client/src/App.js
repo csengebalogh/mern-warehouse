@@ -10,7 +10,7 @@ import {
 } from './pages'
 import { NavBar, Container } from './components'
 
-import getProducts from './actions/products'
+import {getProducts} from './actions/products'
 
 function App() {
     const dispatch = useDispatch()
