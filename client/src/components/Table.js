@@ -1,21 +1,20 @@
-import * as React from 'react';
-import Products from './Products';
+import React from 'react';
 
-function createData(name, supplier, price) {
-  return { name, supplier, price};
-}
+// function createData(name, supplier, price) {
+//   return { name, supplier, price};
+// }
 
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, ),
-  createData('Ice cream sandwich', 237, 9.0, ),
-  createData('Eclair', 262, 16.0, ),
+// const rows = [
+//   createData('Frozen yoghurt', 159, 6.0, ),
+//   createData('Ice cream sandwich', 237, 9.0, ),
+//   createData('Eclair', 262, 16.0, ),
 
-];
+// ];
 
 export default function BasicTable(props) {
   const {children} = props
   return (
-    <table class="table table-striped">
+    <table className="table table-striped">
     <thead>
         <tr>
         <th scope="col">#</th>
@@ -25,7 +24,7 @@ export default function BasicTable(props) {
         </tr>
     </thead>
     <tbody>
-        <Products />
+        {children}
     </tbody>
     </table>
   );
