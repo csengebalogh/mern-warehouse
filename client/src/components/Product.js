@@ -1,18 +1,15 @@
 import React from "react"
 
-function Product(props) {
-    const {
-        name, 
-        supplier, 
-        price
-    } = props
+function Product({ product }) {
+
     return (
-        <tr>
-        <th scope="row">1</th>
-        <td>{name}</td>
-        <td>{supplier}</td>
-        <td>{price}</td>
-        </tr>
+        <>
+            <th scope="row">{product._id}</th>
+            <td>{product.name}</td>
+            <td>{product.supplier}</td>
+            <td>{product.price}</td>
+        </>
+        
     )
 }
 

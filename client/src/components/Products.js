@@ -7,15 +7,34 @@ function Products() {
 
     const products = useSelector((state) => state.products)
 
-    console.log("LOG", products)
-    return (
-        <>
-            <Product name="Chip" supplier="IBM" price="12344"/>
-            <Product name="CPU" supplier="IBM" price="1252344"/>
-            <Product name="RAM" supplier="IBM" price="1265414"/>
-        </>
+    console.log(products)
 
-    )
+    //   {products.map((product) => (
+    //         <tr>
+    //         <Product key={product._id} product={product}/>
+    //         </tr>
+    //         )}
+
+    if (!products.length) {
+        return (
+        <tbody>
+            <tr><td>Nincs itt semmi</td></tr>
+        </tbody>
+        )
+    } else {
+        return (
+            <tbody>
+                {products.map((product) => (
+                    <tr key={product._id}>
+                        <Product product={product}/>
+                    </tr>
+                ))}
+            </tbody>
+        )
+
+        
+    }
+
 }
 
 export default Products
