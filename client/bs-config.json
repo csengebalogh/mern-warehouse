@@ -1,0 +1,8 @@
+{
+    "server": [
+      "src",
+      "node_modules/bootstrap/dist",
+      "node_modules/bootstrap-icons/font"
+    ],
+    "port": 8000
+}
