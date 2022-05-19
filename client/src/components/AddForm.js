@@ -20,6 +20,7 @@ function AddForm({ currentId, setCurrentId}) {
     useEffect(() => {
       if (product) {
         setProductData(product)
+        console.log("useEffect lefut")
       }
     }, [product])
 
@@ -40,7 +41,18 @@ function AddForm({ currentId, setCurrentId}) {
 
         }
 
+        clear()
         handleClose()
+
+    }
+
+    const clear = () => {
+      setCurrentId(null)
+      setProductData({
+        name: '',
+        supplier: '',
+        price: 0
+      })
 
     }
 

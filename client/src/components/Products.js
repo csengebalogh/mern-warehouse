@@ -1,16 +1,29 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Product from './Product'
 
 import { useSelector } from 'react-redux'
 
 function Products({currentId, setCurrentId }) {
 
-    const products = useSelector((state) => state.products)
+    let products = useSelector((state) => state.products)
+
+    useEffect(() => {
+        console.log("fut a products")
+    }, [])
 
     if (!products.length) {
-        console.log(products)
-        return null;
+        console.log("A tömb ures")
+        return (
+            <tbody>
+                <tr>
+                    <td>
+                        Nincs semmim
+                    </td>
+                </tr>
+            </tbody>
+        )
     } else {
+        console.log("a tömb", products)
         return (
             <tbody>
                 {products.map((product) => (
@@ -21,6 +34,8 @@ function Products({currentId, setCurrentId }) {
             </tbody>
         )
     }
+
 }
+
 
 export default Products

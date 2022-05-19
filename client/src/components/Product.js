@@ -15,23 +15,24 @@ function Product({ product, currentId, setCurrentId}) {
     // if we have currentId, return only the post that matches the id
     const fetchedProduct = useSelector((state) => currentId ? state.products.find((p) => p._id === currentId) : null)
 
+    console.log(fetchedProduct)
+
     useEffect(() => {
       if (fetchedProduct) { // exists
         setProductData(fetchedProduct)
       }
     }, [fetchedProduct])
-    
+
     const dispatch = useDispatch()
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const handleClick = () => {
+    const handleDelete = () => {
       dispatch(deleteProduct(product._id))
       console.log("Deleted record", product._id)
     }
-
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -53,7 +54,7 @@ function Product({ product, currentId, setCurrentId}) {
             <td>{product.supplier}</td>
             <td>{product.price}</td>
             <td>
-                <Button variant="danger" onClick={handleClick}>
+                <Button variant="danger" onClick={handleDelete}>
                     <AiFillDelete />
                 </Button>
             </td>

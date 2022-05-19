@@ -17,6 +17,7 @@ function App() {
 
     useEffect(() => {
         dispatch(getProducts())
+        console.log("fut az app")
     }, [dispatch])
 
     return (

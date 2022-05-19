@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 export default function BasicTable(props) {
   const { children } = props
+
+  useEffect(() => {
+    console.log("fut a table")
+  }, [])
 
   return (
     <table className="table table-striped">
