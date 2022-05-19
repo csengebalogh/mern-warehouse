@@ -6,8 +6,7 @@ const productSchema = mongoose.Schema({
     price: Number
 })
 
-//turn schema to model
-
+//turn schema into model
 const postProduct = mongoose.model('postProduct', productSchema)
 
 export default postProduct

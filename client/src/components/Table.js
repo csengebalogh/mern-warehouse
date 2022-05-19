@@ -13,9 +13,7 @@ export default function BasicTable(props) {
         <th scope="col">Price</th>
         </tr>
       </thead>
-      
         {children}
-      
     </table>
   );
 }

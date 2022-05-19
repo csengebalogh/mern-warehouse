@@ -31,14 +31,6 @@ function Product({ product, currentId, setCurrentId}) {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        // if(currentId) {
-        //   dispatch(updateProduct(currentId, productData))
-        //   console.log("updated")
-        // } else {
-        //   dispatch(createProduct(productData))
-        //   console.log("created")
-
-        // }
         if (currentId) {
             dispatch(updateProduct(currentId, productData))
             console.log("updated this", currentId, productData)
@@ -47,14 +39,6 @@ function Product({ product, currentId, setCurrentId}) {
         }
 
         handleClose()
-    }
-
-    const clear = () => {
-      setCurrentId(null)
-      setProductData({
-        name: '',
-        supplier: '',
-        price: 0})
     }
 
     return (

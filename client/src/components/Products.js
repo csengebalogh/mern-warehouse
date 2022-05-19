@@ -23,10 +23,7 @@ function Products({currentId, setCurrentId }) {
                 ))}
             </tbody>
         )
-
-        
     }
-
 }
 
 export default Products

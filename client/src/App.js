@@ -19,7 +19,6 @@ function App() {
         dispatch(getProducts())
     }, [dispatch])
 
-
     return (
         <Router>
             <NavBar />
