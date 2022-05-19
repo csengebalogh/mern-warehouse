@@ -14,5 +14,5 @@ export const createProduct = (newProduct) => {
 // api call for U
 
 export const updateProduct = (id, updatedProduct) => {
-  axios.patch(`${URL}/${id}`, updatedProduct)
+  return axios.patch(`${URL}/${id}`, updatedProduct)
 }

@@ -33,7 +33,7 @@ export const updateProduct = async (req, res) => {
     return res.status(404).send("No id found")
   }
 
-  const updatedProduct = await postProduct.findByIdAndUpdate(_id, product, { new: true})
+  const updatedProduct = await postProduct.findByIdAndUpdate(_id, { ...product, _id}, { new: true})
 
   res.json(updatedProduct)
 }

@@ -12,7 +12,7 @@ function Product({ product, currentId, setCurrentId}) {
         supplier: '',
         price: 0
     })
-
+    // if we have currentId, return only the post that matches the id
     const fetchedProduct = useSelector((state) => currentId ? state.products.find((p) => p._id === currentId) : null)
 
     useEffect(() => {
@@ -39,23 +39,27 @@ function Product({ product, currentId, setCurrentId}) {
         //   console.log("created")
 
         // }
-        if (!currentId) {
+        if (currentId) {
             dispatch(updateProduct(currentId, productData))
-        console.log("updated this", currentId)
+            console.log("updated this", currentId, productData)
+        } else {
+          console.log("Could not update record", currentId, product._id)
         }
 
         handleClose()
     }
 
-
-    // onclick
-    // (e) => setProductData({...productData, supplier: e.target.value})
-    //             value={productData.supplier}
-
+    const clear = () => {
+      setCurrentId(null)
+      setProductData({
+        name: '',
+        supplier: '',
+        price: 0})
+    }
 
     return (
         <>
-            <th scope="row">{product._id}</th>
+            <th scope="row">{currentId}</th>
             <td>{product.name}</td>
             <td>{product.supplier}</td>
             <td>{product.price}</td>
