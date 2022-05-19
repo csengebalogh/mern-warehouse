@@ -9,7 +9,7 @@ function Main() {
         <AddForm currentId={currentId} setCurrentId={setCurrentId}/>
         <Search />
         <Table>
-            <Products setCurrentId={setCurrentId}/>
+            <Products currentId={currentId} setCurrentId={setCurrentId}/>
         </Table>
         </>
 

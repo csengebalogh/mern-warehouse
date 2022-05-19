@@ -8,6 +8,8 @@ import {
 
 // GET THE CURRENT PRODUCT ID
 
+// NE EZT NEZD NENENENNENE
+
 function EditForm({ currentId, setCurrentId}) {
     const [productData, setProductData] = useState({
         name: '',
@@ -18,7 +20,7 @@ function EditForm({ currentId, setCurrentId}) {
     const fetchedProduct = useSelector((state) => currentId ? state.products.find((p) => p._id === currentId) : null)
 
     useEffect(() => {
-      if (fetchedProduct) {
+      if (fetchedProduct) { // exists
         setProductData(fetchedProduct)
       }
     }, [fetchedProduct])
@@ -31,7 +33,7 @@ function EditForm({ currentId, setCurrentId}) {
 
         if(currentId) {
           dispatch(updateProduct(currentId, productData))
-          console.log("updated")
+          console.log("updated", currentId)
         } else {
           dispatch(createProduct(productData))
           console.log("created")
@@ -44,8 +46,8 @@ function EditForm({ currentId, setCurrentId}) {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    return (
-<>
+    return null;
+{/* <>
       <Button variant="secondary" className="w-100 mb-3 mt-3" onClick={handleShow}>
         Edit
       </Button>
@@ -99,8 +101,8 @@ variant="secondary" >
           </Button>
         </Modal.Footer>
       </Modal>
-    </>
-    )
+    </> */}
+    
 }
 
 export default EditForm

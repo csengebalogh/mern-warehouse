@@ -16,17 +16,20 @@ function Product({ product, currentId, setCurrentId}) {
     const fetchedProduct = useSelector((state) => currentId ? state.products.find((p) => p._id === currentId) : null)
 
     useEffect(() => {
-      if (fetchedProduct) {
+      if (fetchedProduct) { // exists
         setProductData(fetchedProduct)
       }
     }, [fetchedProduct])
     
     const dispatch = useDispatch()
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
 
     const handleSubmit = (e) => {
         e.preventDefault()
-
-        console.log("handlesubmit event")
 
         // if(currentId) {
         //   dispatch(updateProduct(currentId, productData))
@@ -38,14 +41,12 @@ function Product({ product, currentId, setCurrentId}) {
         // }
         if (!currentId) {
             dispatch(updateProduct(currentId, productData))
-        console.log("updated")
+        console.log("updated this", currentId)
         }
+
+        handleClose()
     }
 
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
     // onclick
     // (e) => setProductData({...productData, supplier: e.target.value})
@@ -116,7 +117,7 @@ variant="secondary" >
             Close
           </Button>
           <Button variant="primary" onClick={handleSubmit} className="btn btn-primary w-70">
-            Save Changes
+            Edit Changes
           </Button>
         </Modal.Footer>
       </Modal>

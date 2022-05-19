@@ -95,7 +95,7 @@ variant="secondary" onClick={handleClose}>
             Close
           </Button>
           <Button variant="primary"  className="btn btn-primary w-70" onClick={handleSubmit}>
-            Save Changes
+            Add product
           </Button>
         </Modal.Footer>
       </Modal>
