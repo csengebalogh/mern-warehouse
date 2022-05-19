@@ -3,17 +3,9 @@ import Product from './Product'
 
 import { useSelector } from 'react-redux'
 
-function Products() {
+function Products({ setCurrentId }) {
 
     const products = useSelector((state) => state.products)
-
-    console.log(products)
-
-    //   {products.map((product) => (
-    //         <tr>
-    //         <Product key={product._id} product={product}/>
-    //         </tr>
-    //         )}
 
     if (!products.length) {
         return (
@@ -26,7 +18,7 @@ function Products() {
             <tbody>
                 {products.map((product) => (
                     <tr key={product._id}>
-                        <Product product={product}/>
+                        <Product product={product} setCurrentId={setCurrentId}/>
                     </tr>
                 ))}
             </tbody>

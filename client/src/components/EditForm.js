@@ -8,25 +8,21 @@ import {
 
 // GET THE CURRENT PRODUCT ID
 
-function AddForm({ currentId, setCurrentId}) {
+function EditForm({ currentId, setCurrentId}) {
     const [productData, setProductData] = useState({
         name: '',
         supplier: '',
         price: 0
     })
 
-    const product = useSelector((state) => currentId ? state.products.find((p) => p._id === currentId) : null)
+    const fetchedProduct = useSelector((state) => currentId ? state.products.find((p) => p._id === currentId) : null)
 
     useEffect(() => {
-      if (product) {
-        setProductData(product)
+      if (fetchedProduct) {
+        setProductData(fetchedProduct)
       }
-    }, [product])
+    }, [fetchedProduct])
 
-    const [show, setShow] = useState(false)
-
-    const handleClose = () => setShow(false)
-    const handleShow = () => setShow(true)
 
     const dispatch = useDispatch()
 
@@ -35,24 +31,28 @@ function AddForm({ currentId, setCurrentId}) {
 
         if(currentId) {
           dispatch(updateProduct(currentId, productData))
+          console.log("updated")
         } else {
           dispatch(createProduct(productData))
+          console.log("created")
 
         }
 
-        handleClose()
-
     }
 
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     return (
 <>
-      <Button variant="secondary" onClick={handleShow} className="w-100 mb-3 mt-3">
-        Add new product
+      <Button variant="secondary" className="w-100 mb-3 mt-3" onClick={handleShow}>
+        Edit
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add new product</Modal.Title>
+          <Modal.Title>Edit record</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <form className="mb-2" noValidate >
@@ -90,11 +90,11 @@ function AddForm({ currentId, setCurrentId}) {
  </form> 
         </Modal.Body>
         <Modal.Footer>
-          <Button type="submit"     className="btn btn-secondary w-70"
-variant="secondary" onClick={handleClose}>
+          <Button type="submit" onClick={handleClose} className="btn btn-secondary w-70"
+variant="secondary" >
             Close
           </Button>
-          <Button variant="primary"  className="btn btn-primary w-70" onClick={handleSubmit}>
+          <Button variant="primary" onClick={handleSubmit} className="btn btn-primary w-70">
             Save Changes
           </Button>
         </Modal.Footer>
@@ -103,4 +103,4 @@ variant="secondary" onClick={handleClose}>
     )
 }
 
-export default AddForm
+export default EditForm

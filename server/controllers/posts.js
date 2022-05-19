@@ -1,3 +1,4 @@
+import mongoose from 'mongoose'
 import postProduct from '../models/postProduct.js'
 
 export const getData = async (req, res) => {
@@ -21,4 +22,18 @@ export const createProduct = async (req, res) => {
   } catch (error) {
     res.status(409).json({ message: error.message})
   }
+}
+
+export const updateProduct = async (req, res) => {
+  const { id: _id } = req.params
+
+  const product = req.body
+
+  if (!mongoose.Types.ObjectId.isValid(_id)) {
+    return res.status(404).send("No id found")
+  }
+
+  const updatedProduct = await postProduct.findByIdAndUpdate(_id, product, { new: true})
+
+  res.json(updatedProduct)
 }
