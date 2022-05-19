@@ -16,3 +16,7 @@ export const createProduct = (newProduct) => {
 export const updateProduct = (id, updatedProduct) => {
   return axios.patch(`${URL}/${id}`, updatedProduct)
 }
+
+export const deleteProduct = (id) => {
+  return axios.delete(`${URL}/${id}`)
+}

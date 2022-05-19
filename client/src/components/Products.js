@@ -8,11 +8,8 @@ function Products({currentId, setCurrentId }) {
     const products = useSelector((state) => state.products)
 
     if (!products.length) {
-        return (
-        <tbody>
-            <tr><td>Nincs itt semmi</td></tr>
-        </tbody>
-        )
+        console.log(products)
+        return null;
     } else {
         return (
             <tbody>

@@ -3,7 +3,7 @@ import { Button, Modal } from 'react-bootstrap'
 import { BsFillPencilFill} from 'react-icons/bs'
 import { AiFillDelete } from 'react-icons/ai'
 import { useSelector, useDispatch } from 'react-redux'
-import { updateProduct } from "../actions/products"
+import { updateProduct, deleteProduct } from "../actions/products"
 
 
 function Product({ product, currentId, setCurrentId}) {
@@ -27,6 +27,11 @@ function Product({ product, currentId, setCurrentId}) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const handleClick = () => {
+      dispatch(deleteProduct(product._id))
+      console.log("Deleted record", product._id)
+    }
+
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -48,7 +53,7 @@ function Product({ product, currentId, setCurrentId}) {
             <td>{product.supplier}</td>
             <td>{product.price}</td>
             <td>
-                <Button variant="danger">
+                <Button variant="danger" onClick={handleClick}>
                     <AiFillDelete />
                 </Button>
             </td>
